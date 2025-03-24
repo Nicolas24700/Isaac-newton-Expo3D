@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/svg+xml" href="./pomme.png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Isaac Newton Exposition 3D</title>
+  <link rel="stylesheet" href="./style.css">
+  <script defer type="module" src="./index.js"></script>
+</head>
+
+<body>
+  <div id="language-buttons-container">
+    <h1 class="h1page">Exposition Immersive 3D sur Isaac Newton.</h1>
+    <p id="langue-title"></p>
+    <button aria-label="FR" id="btn-fr"></button>
+    <button aria-label="EN" id="btn-en"></button>
+  </div>
+
+  <div id="wayvycom">
+    <p><img src="./LogoNavbar.png" alt=""> <span id="wayvycom-text">Crée par WayvyCom</span></p>
+</div>
+
+  <div id="page">
+  </div>
+  
+  <div id="crosshair">
+  </div>
+  <div id="infoDiv">
+    <h1 id="infoDiv-title"></h1>
+    <p id="infoDiv-content"></p>
+    <p><strong id="infoDiv-close"></strong></p>
+  </div>
+
+  <div id="infoDivRed">
+    <h1 id="infoDivRed-title"></h1>
+    <p id="infoDivRed-content"></p>
+    <p><strong id="infoDivRed-close"></strong></p>
+  </div>
+
+  <div id="infoDivBlue">
+    <h1 id="infoDivBlue-title"></h1>
+    <p id="infoDivBlue-content"></p>
+    <p><strong id="infoDivBlue-close"></strong></p>
+  </div>
+
+  <div id="infoDivViolet">
+    <h1 id="infoDivViolet-title"></h1>
+    <p id="infoDivViolet-content"></p>
+    <p><strong id="infoDivViolet-close"></strong></p>
+  </div>
+
+  <div id="loadingBarContainer">
+    <div id="loadingBar"></div>
+    <div id="loadingPercentage">0%</div>
+  </div>
+  <div id="startMenu">
+    <button id="start"></button>
+</div>
+
+<div class="touche-container">
+  <div class="touches">
+      <div class="touche">
+          <img src="./keyZ.jpg" alt="Touche Z">
+          <span id="touche-avancer"></span>
+      </div>
+      <div class="touche">
+          <img src="./KeyS.jpg" alt="Touche S">
+          <span id="touche-reculer"></span>
+      </div>
+      <div class="touche">
+          <img src="./KeyQ.jpg" alt="Touche Q">
+          <span id="touche-gauche"></span>
+      </div>
+      <div class="touche">
+          <img src="./KeyD.jpg" alt="Touche D">
+          <span id="touche-droite"></span>
+      </div>
+      <div class="touche">
+          <img src="./KeyEchap.jpg" alt="Touche Échap">
+          <span id="touche-quitter"></span>
+      </div>
+  </div>
+</div>
+
+  <script>
+    const translations = {
+    fr: {
+      h1page: "Exposition Immersive 3D sur Isaac Newton.",
+        infoDiv: {
+            title: "Le Telescope",
+            content: "Isaac Newton a également conçu un télescope réflecteur en 1668, qui utilisait des miroirs pour éviter les aberrations chromatiques présentes dans les télescopes à lentilles de l'époque. <br><br> Cet instrument, plus compact et performant, mesurait environ 15 centimètres de longueur avec un miroir primaire de 5 centimètres de diamètre. <br> <br> Il a grandement amélioré l'observation astronomique, ouvrant la voie à de nouvelles découvertes dans l'univers.",
+            close: "Cliquez sur l'écriteau pour fermer cette fenêtre"
+        },
+        infoDivRed: {
+            title: "Le Pendule de Newton",
+            content: "Le pendule de newton fait référence au célèbre \"bascule de Newton\" ou \"pendule de Newton\", qui illustre la conservation de l'énergie et des mouvements oscillants. <br><br> Bien que plus populaire comme un objet didactique moderne, il rappelle l'approfondissement des principes de la mécanique newtonienne, en particulier les lois du mouvement et de l'interaction des forces.",
+            close: "Cliquez sur l'écriteau pour fermer cette fenêtre"
+        },
+        infoDivBlue: {
+            title: "Isaac Newton (1642-1727)",
+            content: "Isaac Newton est l'un des scientifiques les plus influents de l'histoire. Physicien, mathématicien et astronome, il a formulé la loi de la gravitation universelle et développé les bases du calcul différentiel et intégral. <br><br>Son travail a révolutionné notre compréhension de l'univers, influençant la physique, les mathématiques et même la philosophie naturelle.",
+            close: "Cliquez sur l'écriteau pour fermer cette fenêtre"
+        },
+        infoDivViolet: {
+            title: "La Lumière",
+            content: "Dans cette peinture, Isaac Newton expérimente avec un prisme pour explorer la nature de la lumière. <br><br>En 1666, Newton prouve que la lumière blanche est composée de différentes couleurs en la faisant passer à travers un prisme. Cette expérience fonda sa théorie de la lumière et de la couleur, marquant un tournant dans la compréhension de l'optique.",
+            close: "Cliquez sur l'écriteau pour fermer cette fenêtre"
+        },
+        langue: {
+            title: "Choisir votre langue :",
+        },
+        start: {
+            text: "Explorer"
+        },
+        touches: {
+            avancer: "Avancer",
+            reculer: "Reculer",
+            gauche: "Aller à gauche",
+            droite: "Aller à droite",
+            quitter: "Quitter"
+        },
+        wayvycom: {
+            text: "Crée par WayvyCom"
+        }
+    },
+    en: {
+      h1page: "3D Immersive Exhibition on Isaac Newton.",
+        infoDiv: {
+            title: "The Telescope",
+            content: "Isaac Newton also designed a reflecting telescope in 1668, which used mirrors to avoid the chromatic aberrations present in the lens telescopes of the time. <br><br> This instrument, more compact and efficient, measured about 15 centimeters in length with a primary mirror 5 centimeters in diameter. <br> <br> It greatly improved astronomical observation, paving the way for new discoveries in the universe.",
+            close: "Click on the sign to close this window"
+        },
+        infoDivRed: {
+            title: "Newton's Pendulum",
+            content: "Newton's pendulum refers to the famous \"Newton's cradle\" or \"Newton's pendulum\", which illustrates the conservation of energy and oscillating motions. <br><br> Although more popular as a modern didactic object, it recalls the deepening of the principles of Newtonian mechanics, particularly the laws of motion and the interaction of forces.",
+            close: "Click on the sign to close this window"
+        },
+        infoDivBlue: {
+            title: "Isaac Newton (1642-1727)",
+            content: "Isaac Newton is one of the most influential scientists in history. Physicist, mathematician, and astronomer, he formulated the law of universal gravitation and developed the foundations of differential and integral calculus. <br><br>His work revolutionized our understanding of the universe, influencing physics, mathematics, and even natural philosophy.",
+            close: "Click on the sign to close this window"
+        },
+        infoDivViolet: {
+            title: "Light",
+            content: "In this painting, Isaac Newton experiments with a prism to explore the nature of light. <br><br>In 1666, Newton proved that white light is composed of different colors by passing it through a prism. This experiment founded his theory of light and color, marking a turning point in the understanding of optics.",
+            close: "Click on the sign to close this window"
+        },
+        langue: {
+            title: "Choose your language :",
+        },
+        start: {
+            text: "Explore"
+        },
+        touches: {
+            avancer: "Move forward",
+            reculer: "Move backward",
+            gauche: "Move left",
+            droite: "Move right",
+            quitter: "Quit"
+        },
+        wayvycom: {
+            text: "Created by WayvyCom"
+        }
+    }
+};
+
+document.getElementById('btn-fr').addEventListener('click', () => {
+    setLanguage('fr');
+});
+
+document.getElementById('btn-en').addEventListener('click', () => {
+    setLanguage('en');
+});
+
+function setLanguage(language) {
+  document.querySelector('.h1page').innerHTML = translations[language].h1page;
+  
+    document.getElementById('infoDiv-title').innerHTML = translations[language].infoDiv.title;
+    document.getElementById('infoDiv-content').innerHTML = translations[language].infoDiv.content;
+    document.getElementById('infoDiv-close').innerHTML = translations[language].infoDiv.close;
+
+    document.getElementById('infoDivRed-title').innerHTML = translations[language].infoDivRed.title;
+    document.getElementById('infoDivRed-content').innerHTML = translations[language].infoDivRed.content;
+    document.getElementById('infoDivRed-close').innerHTML = translations[language].infoDivRed.close;
+
+    document.getElementById('infoDivBlue-title').innerHTML = translations[language].infoDivBlue.title;
+    document.getElementById('infoDivBlue-content').innerHTML = translations[language].infoDivBlue.content;
+    document.getElementById('infoDivBlue-close').innerHTML = translations[language].infoDivBlue.close;
+
+    document.getElementById('infoDivViolet-title').innerHTML = translations[language].infoDivViolet.title;
+    document.getElementById('infoDivViolet-content').innerHTML = translations[language].infoDivViolet.content;
+    document.getElementById('infoDivViolet-close').innerHTML = translations[language].infoDivViolet.close;
+
+    document.getElementById('langue-title').innerHTML = translations[language].langue.title;
+    document.getElementById('start').innerHTML = translations[language].start.text;
+
+    document.getElementById('touche-avancer').innerHTML = translations[language].touches.avancer;
+    document.getElementById('touche-reculer').innerHTML = translations[language].touches.reculer;
+    document.getElementById('touche-gauche').innerHTML = translations[language].touches.gauche;
+    document.getElementById('touche-droite').innerHTML = translations[language].touches.droite;
+    document.getElementById('touche-quitter').innerHTML = translations[language].touches.quitter;
+
+
+    document.getElementById('wayvycom-text').innerHTML = translations[language].wayvycom.text;
+}
+
+setLanguage('fr');
+  </script>
+</body>
+
+</html>
