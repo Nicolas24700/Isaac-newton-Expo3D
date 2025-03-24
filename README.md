@@ -1,16 +1,3 @@
-# Starter Three.js
+# Site Exposition 3D sur Isaac-Newton
 
-## Setup
-Download [Node.js](https://nodejs.org/en/download/).
-Run this followed commands:
-
-``` bash
-# Install dependencies (only the first time)
-npm install
-
-# Run the local server at localhost:8080
-npm run dev
-
-# Build for production in the dist/ directory
-npm run build
-```
+## Le site à été effectuée dans le cadre d'un projet etudiant ou nous devions faire un site de réservation immersive , en bonus nous avions décider d'effectuer ce site 3D en utilisant Three js.
